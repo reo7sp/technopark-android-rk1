@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements OnArticleClickLis
             return;
         }
         _article = (Article) savedInstanceState.getSerializable(ARG_ARTICLE);
+        if (_article != null) {
+            _openArticleFragment(_article);
+        }
     }
 
     private boolean _isLandscape() {
@@ -55,6 +58,11 @@ public class MainActivity extends AppCompatActivity implements OnArticleClickLis
 
     @Override
     public void onArticleClick(Article article) {
+        _openArticleFragment(article);
+        this._article = article;
+    }
+
+    private void _openArticleFragment(Article article) {
         ArticleFragment articleFragment = ArticleFragment.newInstance(article);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -69,7 +77,5 @@ public class MainActivity extends AppCompatActivity implements OnArticleClickLis
             transaction.addToBackStack(null);
         }
         transaction.commit();
-
-        this._article = article;
     }
 }
