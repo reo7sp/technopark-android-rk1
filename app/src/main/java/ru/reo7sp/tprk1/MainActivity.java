@@ -13,17 +13,18 @@ public class MainActivity extends AppCompatActivity implements OnArticleClickLis
     private static final String ARG_ARTICLE = "article";
 
     private Article _article;
+    private ArticleListFragment _listFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArticleListFragment listFragment = new ArticleListFragment();
-        _setupListFragment(listFragment);
+        _listFragment = new ArticleListFragment();
+        _setupListFragment(_listFragment);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.article_list_container, listFragment);
+        transaction.replace(R.id.article_list_container, _listFragment);
         transaction.commit();
 
         _restoreArticle(savedInstanceState);
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity implements OnArticleClickLis
             if (getSupportFragmentManager().getBackStackEntryCount() != 0) {
                 getSupportFragmentManager().popBackStack();
             }
+            transaction.replace(R.id.article_list_container, _listFragment);
             transaction.replace(R.id.article_container, articleFragment);
         } else {
             transaction.replace(R.id.article_list_container, articleFragment);
