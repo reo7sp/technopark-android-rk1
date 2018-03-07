@@ -30,6 +30,20 @@ public class MainActivity extends AppCompatActivity implements OnArticleClickLis
         _restoreArticle(savedInstanceState);
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        if (_article != null) {
+            outState.putSerializable(ARG_ARTICLE, _article);
+        }
+    }
+
+    @Override
+    public void onArticleClick(Article article) {
+        _openArticleFragment(article);
+        this._article = article;
+    }
+
     private void _setupListFragment(ArticleListFragment listFragment) {
         listFragment.setOnArticleClickListener(this);
     }
@@ -46,20 +60,6 @@ public class MainActivity extends AppCompatActivity implements OnArticleClickLis
 
     private boolean _isLandscape() {
         return getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        if (_article != null) {
-            outState.putSerializable(ARG_ARTICLE, _article);
-        }
-    }
-
-    @Override
-    public void onArticleClick(Article article) {
-        _openArticleFragment(article);
-        this._article = article;
     }
 
     private void _openArticleFragment(Article article) {
