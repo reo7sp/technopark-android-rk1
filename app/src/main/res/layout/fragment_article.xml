@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ru.reo7sp.tprk1.ArticleFragment">
+
+    <TextView
+        android:id="@+id/article_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="title"
+        android:textSize="24sp"
+        android:paddingTop="8dp"
+        android:paddingHorizontal="8dp"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/article_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/article_title"
+        android:paddingHorizontal="8dp"
+        android:text="date" />
+
+    <Space
+        android:id="@+id/article_space"
+        android:layout_width="1dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/article_date"
+        android:layout_marginTop="16dp"
+        android:textColor="#000000" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/article_space"
+        android:layout_toEndOf="@+id/article_space">
+
+        <TextView
+            android:id="@+id/article_contents"
+            android:layout_width="match_parent"
+            android:paddingHorizontal="8dp"
+            android:layout_height="wrap_content"
+            android:text="contents"
+            android:textColor="#000000"
+            android:orientation="vertical" />
+    </ScrollView>
+    android:layout_toEndOf="@+id/textView2" />
+</RelativeLayout>
